@@ -8,7 +8,7 @@
 import SwiftUI
 
 public struct RichText: View {
-    @State private var dynamicHeight: CGFloat = .zero
+    private var dynamicHeight: CGFloat = .zero
     
     let html: String
     var configuration: Configuration
@@ -22,7 +22,7 @@ public struct RichText: View {
 
     public var body: some View {
         ZStack(alignment: .top) {
-            WebView(dynamicHeight: $dynamicHeight, html: html, configuration: configuration)
+            WebView(dynamicHeight: .constant(dynamicHeight), html: html, configuration: configuration)
                 .frame(height: dynamicHeight)
 
             if self.dynamicHeight == 0 {
